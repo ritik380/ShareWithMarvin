@@ -13,9 +13,8 @@ public class SWMAutomation {
 
 		// setting chromebrowser
 		ChromeOptions option = new ChromeOptions();
-		option.setBinary("C:\\Selenium\\chrome-win64\\chrome-win64\\chrome.exe");
+		option.setBinary("C:\\Users\\HP\\Selenium\\chrome-win64\\chrome.exe");
 
-	
 		WebDriver driver = new ChromeDriver(option);
 		driver.manage().window().maximize();
 
@@ -25,34 +24,28 @@ public class SWMAutomation {
 		// Set an explicit wait
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
 
-		
-	    //Registration registration = new Registration();
-        Login login = new Login();
-        Dashboard dashBoard = new Dashboard();
-        
-        //registration.registeruser(driver, wait);
-        SWMAutomation.waitFor(5000);
-        
-        login.loginUser(driver, wait);
-        SWMAutomation.waitFor(3000);
-        
-        dashBoard.dashboard(driver, wait);
-        SWMAutomation.waitFor(5000);
-        
-        
-        
-        
-        
-		// driver.quit();
+		// Registration registration = new Registration();
+		Login login = new Login();
+		Dashboard dashBoard = new Dashboard();
+
+		// registration.registeruser(driver, wait);
+		SWMAutomation.waitFor(5000);
+
+		login.loginUser(driver, wait);
+		SWMAutomation.waitFor(3000);
+
+		dashBoard.dashboard(driver, wait);
+		SWMAutomation.waitFor(5000);
+
+		// driver.quit(); 
 	}
-	
 
 	public static void waitFor(int milliseconds) {
 		// TODO Auto-generated method stub
-		 try {
-	            Thread.sleep(milliseconds); // Wait for the specified time in milliseconds
-	        } catch (InterruptedException e) {
-	            e.printStackTrace();
-	        }
+		try {
+			Thread.sleep(milliseconds); // Wait for the specified time in milliseconds
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 }

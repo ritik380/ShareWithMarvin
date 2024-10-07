@@ -10,7 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Registration {
 	public void registeruser(WebDriver driver, WebDriverWait wait) {
-		
+
 		// Navigate to web
 		driver.get("https://app.dev.sharewithmarvin.io/login");
 		SWMAutomation.waitFor(5000);
@@ -21,11 +21,12 @@ public class Registration {
 		WebElement Signup = wait.until(ExpectedConditions.visibilityOfElementLocated(By.tagName("a")));
 		Signup.click();
 		SWMAutomation.waitFor(5000);
-		
-		// WebElement productOption1 = driver.findElement(By.xpath(""));
-		   WebElement productOption2 = driver.findElement(By.xpath("//body[1]/div[1]/div[1]/div[1]/div[1]/form[1]/div[1]/div[1]/div[2]/div[1]/div[2]/div[1]/div[1]/div[3]/img[1]"));
 
-				productOption2.click();
+		// WebElement productOption1 = driver.findElement(By.xpath(""));
+		WebElement productOption2 = driver.findElement(By.xpath(
+				"//body[1]/div[1]/div[1]/div[1]/div[1]/form[1]/div[1]/div[1]/div[2]/div[1]/div[2]/div[1]/div[1]/div[3]/img[1]"));
+
+		productOption2.click();
 
 		// Fill user details
 		WebElement Firstname = wait
@@ -70,8 +71,8 @@ public class Registration {
 		confirmPassword.sendKeys("Password@200");
 		SWMAutomation.waitFor(5000);
 
-		WebElement Checkbox = wait
-				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='h-4 w-4 bg-white rounded-full']")));
+		WebElement Checkbox = wait.until(ExpectedConditions
+				.visibilityOfElementLocated(By.xpath("//div[@class='h-4 w-4 bg-white rounded-full']")));
 		Checkbox.click();
 		SWMAutomation.waitFor(5000);
 
@@ -82,21 +83,20 @@ public class Registration {
 		Promocode.sendKeys("AS4C5BDE74");
 		SWMAutomation.waitFor(5000);
 
-
 		System.out.println("Please complete the CAPTCHA manually, then press any key to continue...");
 
-		try (Scanner scanner = new Scanner(System.in)) //Wait for user until click enter button
+		try (Scanner scanner = new Scanner(System.in)) // Wait for user until click enter button
 		{
 			scanner.nextLine();
 		}
-		
-		System.out.println("Input received, continuing with the process.");
-		
-		//WebElement createAccount = wait.until(ExpectedConditions
-                //.elementToBeClickable(By.xpath("//button[normalize-space()='Create Account']")));
 
-        
-		//createAccount.click();
+		System.out.println("Input received, continuing with the process.");
+
+		// WebElement createAccount = wait.until(ExpectedConditions
+		// .elementToBeClickable(By.xpath("//button[normalize-space()='Create
+		// Account']")));
+
+		// createAccount.click();
 
 		String currentUrl = driver.getCurrentUrl();
 		if (currentUrl.contains(
@@ -108,24 +108,22 @@ public class Registration {
 
 		WebElement startTrail = driver.findElement(By.xpath("//div[@class='SubmitButton-IconContainer']"));
 		startTrail.click();
-		
-		
-		try {
-            
-            WebElement alertElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("notistack-snackbar")));
-           
-            String alertMessage = alertElement.getText();
 
-            // Validate the message content
-            if (alertMessage.contains("Registration successful")) {
-                System.out.println("Registration validation passed: " + alertMessage);
-            } else {
-                System.out.println("Registration validation failed: " + alertMessage);
-            }
-        } catch (Exception e) {
-            System.out.println("No registration alert message found.");
-        }
+		try {
+
+			WebElement alertElement = wait
+					.until(ExpectedConditions.visibilityOfElementLocated(By.id("notistack-snackbar")));
+
+			String alertMessage = alertElement.getText();
+
+			// Validate the message content
+			if (alertMessage.contains("Registration successful")) {
+				System.out.println("Registration validation passed: " + alertMessage);
+			} else {
+				System.out.println("Registration validation failed: " + alertMessage);
+			}
+		} catch (Exception e) {
+			System.out.println("No registration alert message found.");
 		}
 	}
-
-
+}
